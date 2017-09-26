@@ -14,6 +14,8 @@ RUN wget ${TED_URL}
 RUN rpmbuild -ta ${TED_FILE_NAME} --rmsource
 RUN rpm -i "~/rpmbuild/RPMS/x86_64/ted-${TED_VERSION}-1.x86_64.rpm"
 
-ENTRYPOINT ["Ted"]
+WORKDIR /source
+
+ENTRYPOINT ["/usr/bin/Ted"]
 
 CMD ["--help"]
